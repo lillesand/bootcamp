@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv='content-type' content='text/html; charset=utf-8' />
+    <title>Introduksjon til JavaScript</title>
+    <link href='node_modules/remark-bekk/dist/bekk.css' type='text/css' rel='stylesheet'>
+    
+    <style type='text/css' media='screen'>
+
+      .jquery { background-color: #1E2837; }
+
+    </style>
+  </head>
+  <body>
+    <textarea id='source'>
+
+class: front-page
+
+# Det faglige håndverket
+_om clean code og kodehåndverk_
+## 
+
+Erik Wendel, Nicolay Hvidsten og Jøran Lillesand
+03/08/2016
+
+---
+
+class: agenda
+# Agenda
+
+.center[![](bilder/kinderegg.png)]
+
+* Del 1: Utviklerens håndverk (Erik) 
+* Del 2: Veien til produksjon (Nicolay)
+* Del 3: Livet i produksjon (Jøran)
+
+---
+
+class: middle center
+![](bilder/bok1.jpeg)
+
+---
+
+class: split
+![](bilder/bok2.jpeg)
+
+--
+
+# Forfattere og utviklere
+
+--
+
+* kommunikasjon
+* ordenes kraft
+* formatering
+* publikum
+* leseerfaring
+
+???
+
+forfatteren kan bruke ord, vi bruker hovedsaklig kode (men ord i kommentarene)
+forfatteren kjenner ikke nødvendigvis sitt publikum (vårt er utviklere)
+
+formatering er viktig for begge to,
+og at det er lett å lese
+
+begge handler om å kommunisere - enten for business eller for pleasure
+
+en forfatter leser hundretalls bøker før man skriver
+en utvikler leser langt mindre kode!
+
+---
+
+class: middle center
+# Hva er godt kodehåndverk?
+
+---
+
+class: middle center
+# Hva er godt kodehåndverk?
+
+kode som er korrekt
+
+--
+
+kode som er lesbar
+
+--
+
+kode som er testbar
+
+--
+
+kode som er vedlikeholdbar
+
+--
+
+og mye mer!
+
+---
+
+background-image: url(bilder/javazone.png)
+
+.circle.red.top-right[14%]
+
+---
+
+class: middle center
+background-image: url(bilder/shoes.jpg)
+# Om å begynne i BEKK
+
+???
+
+Vi forventer ikke at dere kan alt nå!
+..men vi forventer maks innsats!
+Dere er ansatt fordi vi har tro på deres potensial
+Finn det potensialet og bruk det!
+Still alle spørsmål - ingen av dem er dumme
+Gjør dere flid med kodehåndverket!
+BEKK har en særegen kvalitetskultur som SKAL taes vare på
+
+---
+
+class: middle center
+![](bilder/impostor1.jpg)
+
+_det er lov å føle seg litt sånn av og til_
+
+---
+
+class: middle center
+![](bilder/impostor2.jpg)
+
+---
+
+class: agenda
+
+# Agenda
+
+* God kode 
+(formatering, navngiving, kommentarer)
+
+* God versjonkontroll
+* Code Review
+* Pull Requests
+* Testing
+
+---
+
+class: middle center
+# God kode er vedlikeholdbar!
+
+_koden vår lever i snitt 10 år_
+
+---
+
+# Vedlikeholdbarhet handler bl.a om...
+
+* testbarhet og testing
+* utvidbarhet
+* lesbarhet
+* driftbarhet
+* speiling av domene
+* dokumentasjon
+
+---
+
+class: middle center
+
+class: middle center
+# Formatering
+![](bilder/tabsspaces.jpg)
+
+---
+
+class: middle
+# Formatering
+
+* indentering
+* navngiving
+* whitespaces
+* linjelengde
+* linjeskift
+* filstørrelse
+* filorganisering
+
+---
+
+class: middle center
+
+# Navngiving
+
+_en viktig del av kommunikasjonen_
+
+---
+
+class: middle center
+```Java
+public class AbstractAnnotationConfigDispatcherServletInitializer
+```
+--
+![](bilder/verysadface.png)
+
+---
+
+# Prinsipper for navngiving
+
+1. spend a lot of time on inventing good names
+2. use code reviews
+3. dont hesitate to rename
+4. spend a lot of time on inventing good names
+5. use code reviews
+6. dont hesitate to rename
+
+---
+
+# Prinsipper for navngiving
+
+1. Tenk deg nøye om
+2. Intensjonen må komme tydelig frem
+3. Vær konsis hvis mulig
+4. Spør en venn!
+
+---
+
+class: middle center
+## Norsk eller engelsk?
+_ litt norwenglish, kanskje?_
+
+--
+
+_følg prosjektkonvensjon_
+
+---
+
+class: middle center
+# Oppgave
+
+## Formatering og navngiving
+
+## https://github.com/ewendel/clean-code
+
+_01-formatering.java_
+
+---
+
+class: middle center
+
+# Kommentarer
+
+---
+
+class: middle
+# Kommentarer
+
+```
+// 
+// Dear maintainer:
+// 
+// Once you are done trying to 'optimize' this routine,
+// and have realized what a terrible mistake that was,
+// please increment this counter as a warning to the next person:
+
+// total_hours_wasted_here = 42
+```
+
+---
+
+class: middle 
+# Kommentarer
+
+```
+//When I wrote this, only God and I understood what I was doing
+//Now, God only knows
+```
+
+
+---
+
+class: middle center
+# Kommentarer
+
+_failure to express intention in code_
+
+---
+
+# Om kommentarer
+
+## 1. Don't say what the code does 
+
+_(the code should already do that)_
+
+## 2. Don't explain awkward logic 
+
+_(improve code to make that clear)_
+
+## 3. Don't add too many comments 
+
+_(it's messy and they'll get out of date)_
+
+---
+
+class: middle center
+# Oppgave
+## Kommentarer
+
+_02-kommentarer.js_
+
+---
+
+class: middle center
+
+# Testing
+
+_for guds skyld. skriv tester! pretty pliz._
+
+--
+
+_dersom noe ikke kan testes - gjør det annerledes!_
+???
+
+Testkoden skal også være clean code!
+Noen tenker at kun produksjonskode skal være bra, det skalerer ikke.
+Noen teknologier er av natur mer testbare enn andre.
+De vanskelig testbare er på vei ut, mye nettopp pga det.
+JSP, Wicket, JSF, egentlig de fleste serverside komponentbaserte rammeverk
+
+---
+
+class: middle center
+
+# Atomiske commits
+_hva er en commit?_
+
+---
+
+class: middle center
+
+_An “atomic” change revolves around one task or one fix._
+
+---
+
+class: middle center
+
+![](bilder/xkcd_commit.png)
+
+???
+
+Det man gjør med en commitmelding er å GJENETABLERE KONTEKST
+
+---
+ 
+# 7 regler for lange commitmeldinger
+
+1. Separate subject from body with a blank line 
+2. Limit the subject line to 50 characters 
+3. Capitalize the subject line 
+4. Do not end the subject line with a period 
+5. Use the imperative mood in the subject line 
+6. Wrap the body at 72 characters 
+7. Use the body to explain what and why vs. how
+
+---
+
+```
+$ git log --oneline -5 --author cbeams --before "Fri Mar 26 2009"
+
+e5f4b49 Re-adding ConfigurationPostProcessorTests after its brief removal in r814. @Ignore-ing the testCglibClassesAreLoadedJustInTimeForEnhancement() method as it turns out this was one of the culprits in the recent build breakage. The classloader hacking causes subtle downstream effects, breaking unrelated tests. The test method is still useful, but should only be run on a manual basis to ensure CGLIB is not prematurely classloaded, and should not be run as part of the automated build.
+2db0f12 fixed two build-breaking issues: + reverted ClassMetadataReadingVisitor to revision 794 + eliminated ConfigurationPostProcessorTests until further investigation determines why it causes downstream tests to fail (such as the seemingly unrelated ClassPathXmlApplicationContextTests)
+147709f Tweaks to package-info.java files
+22b25e0 Consolidated Util and MutableAnnotationUtils classes into existing AsmUtils
+7f96f57 polishing
+Yikes. Compare that with these more recent commits from the same repository:
+
+
+$ git log --oneline -5 --author pwebb --before "Sat Aug 30 2014"
+
+5ba3db6 Fix failing CompositePropertySourceTests
+84564a0 Rework @PropertySource early parsing logic
+e142fd1 Add tests for ImportSelector meta-data
+887815f Update docbook dependency and generate epub
+ac8326d Polish mockito usage
+```
+
+???
+
+Gode eksempelkodebaser: Linuxkjernen og Git-kildekoden
+---
+
+class: middle center
+
+# Kodegjennomgang
+
+_såkalte Code Reviews_
+
+---
+
+class: middle center
+
+![](bilder/PR1.png)
+
+---
+
+class: middle center
+
+![](bilder/PR2.png)
+
+
+---
+
+class: middle center
+
+## https://github.com/blog/1943-how-to-write-the-perfect-pull-request
+
+---
+
+class: middle center
+
+# SOLID
+
+_...lærer dere fra clean code!_
+
+---
+
+class: agenda
+
+# SOLID
+
+S - single responsibility principle (SRP)
+
+O - Open/closed principle (OCP)
+
+L - Liskov substitution principle (LSP)
+
+I - Interface segregation principle (ISP)
+
+D - dependency inversion principle (DIP)
+
+???
+Disse finnes, har ikke tenkt å gå gjennom dem nå.
+Les boka!
+Les så boka igjen om ett år. Da skjønner du mer!
+
+---
+
+class: middle center
+# DRY
+
+--
+_don't repeat yourself_
+
+
+???
+Et tveegget sverd. Man skal jo ikke skrive samme koden to ganger, meeeen..
+noen ganger kan det bli dyrere å vedlikeholde felles kode for noe som opprinnelig skulle være likt,
+men så...
+
+---
+
+class: middle center
+# YAGNI
+
+--
+_you ain't gonna need it_
+
+???
+Våpenet mot over-engineering!
+Prøv å hold det enkelt, prøv med det enkleste som trengs.
+Ikke lag funksjonalitet pre-emptively som du ikke vet at du trenger.
+
+---
+
+class: middle center
+# KISS
+
+--
+_keep it simple, stupid_
+
+???
+
+Simplisitet er alltid bra i seg selv!
+Hvis noe kan løses tilfredsstillende på to måter er de enkleste best.
+
+---
+
+class: middle center
+# Oppgaver
+## Refaktorering
+
+_03-refaktorering.js_
+
+tester ligger i _oppgaver.html_
+
+---
+
+class: middle center
+
+#### _Clean code is a code that is written by someone who cares_
+    
+_Michael Feathers_
+
+---
+
+class: split
+# Gode ressursser
+![](bilder/cleancode.jpg)
+
+## Clean Code
+
+---
+
+class: split
+# Gode ressursser
+![](bilder/pragmaticprogrammer.jpg)
+
+## Clean Code
+## Pragmatic Programmer
+
+---
+
+class: split
+# Gode ressursser
+![](bilder/simplemadeeasy.png)
+
+## Clean Code
+## Pragmatic Programmer
+## Simple Made Easy
+
+---
+
+
+
+
+
+
+
+    </textarea>
+
+    <script src='node_modules/remark-bekk/vendor/remark.min.js' type='text/javascript'></script>
+    <script type='text/javascript'>
+      var slideshow = remark.create({
+        ratio: '16:9',
+        highlightStyle: 'monokai'
+      });
+    </script>
+  </body>
+</html>
